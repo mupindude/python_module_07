@@ -8,6 +8,24 @@ class Creatureactory(ABC):
     def create_base(self) -> Creature:
         pass
 
-    @bastractmethod
+    @abstractmethod
     def create_evolved(self) -> Creature:
         pass
+
+class FlameFactory(Creatureactory):
+
+    def create_base(self) -> Creature:
+        return Flameling()
+
+    def create_evolved(self):
+        return Pyrodon()
+
+
+class AquaFactory(Creatureactory):
+
+
+    def create_base(self) -> Creature:
+        return Aquabub()
+
+    def create_evolved(self) -> Creature:
+        return Torragon
