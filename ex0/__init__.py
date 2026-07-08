@@ -1,4 +1,3 @@
-from ex0.factories import Creatureactory, F, AquaFactory
-
+from ex0.factories import CreatureFactory, FlameFactory, AquaFactory
 
 __all__ = ["CreatureFactory", "FlameFactory", "AquaFactory"]

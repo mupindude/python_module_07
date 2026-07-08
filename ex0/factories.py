@@ -1,8 +1,8 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from ex0.creatures import Creature, Flameling, Pyrodon, Aquabub, Torragon
 
 
-class Creatureactory(ABC):
+class CreatureFactory(ABC):
 
     @abstractmethod
     def create_base(self) -> Creature:
@@ -12,7 +12,8 @@ class Creatureactory(ABC):
     def create_evolved(self) -> Creature:
         pass
 
-class FlameFactory(Creatureactory):
+
+class FlameFactory(CreatureFactory):
 
     def create_base(self) -> Creature:
         return Flameling()
@@ -21,11 +22,10 @@ class FlameFactory(Creatureactory):
         return Pyrodon()
 
 
-class AquaFactory(Creatureactory):
-
+class AquaFactory(CreatureFactory):
 
     def create_base(self) -> Creature:
         return Aquabub()
 
     def create_evolved(self) -> Creature:
-        return Torragon
+        return Torragon()
