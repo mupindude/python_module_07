@@ -12,7 +12,7 @@ class TransformCapability(ABC):
         self.is_transformed: bool = False
 
     @abstractmethod
-    def transform(slef) -> str:
+    def transform(self) -> str:
         pass
 
     @abstractmethod
