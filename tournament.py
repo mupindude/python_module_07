@@ -1,6 +1,12 @@
 from ex0.factories import FlameFactory, AquaFactory
 from ex1.factories import HealingCreatureFactory, TransformCreatureFactory
-from ex2 import NormalStrategy, AggressiveStrategy, DefensiveStrategy, InvalidStrategyError
+from ex2 import (
+    NormalStrategy,
+    AggressiveStrategy,
+    DefensiveStrategy,
+    InvalidStrategyError,
+)
+
 
 def run_tournament(opponents: list) -> None:
     """Executes a round-robin tournament matches based on assigned strategies."""
@@ -32,6 +38,7 @@ def run_tournament(opponents: list) -> None:
                 print(f"Battle error, aborting tournament: {e}")
                 return
 
+
 if __name__ == "__main__":
     # Instantiate Factories
     flame_fact = FlameFactory()
@@ -47,24 +54,28 @@ if __name__ == "__main__":
     # --- Tournament 0 (Basic) ---
     print("Tournament 0 (basic)")
     print("[ (Flameling+Normal), (Healing+Defensive) ]")
-    run_tournament([
-        (flame_fact, normal_strat),
-        (heal_fact, defensive_strat)
-    ])
+    run_tournament([(flame_fact, normal_strat), (heal_fact, defensive_strat)])
 
     # --- Tournament 1 (Error handling validation) ---
     print("\nTournament 1 (error)")
     print("[ (Flameling+Aggressive), (Healing+Defensive) ]")
-    run_tournament([
-        (flame_fact, aggressive_strat), # This will error out because Flameling cannot transform
-        (heal_fact, defensive_strat)
-    ])
+    run_tournament(
+        [
+            (
+                flame_fact,
+                aggressive_strat,
+            ),  # This will error out because Flameling cannot transform
+            (heal_fact, defensive_strat),
+        ]
+    )
 
     # --- Tournament 2 (Multiple participants) ---
     print("\nTournament 2 (multiple)")
     print("[ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive) ]")
-    run_tournament([
-        (aqua_fact, normal_strat),
-        (heal_fact, defensive_strat),
-        (trans_fact, aggressive_strat)
-    ])
+    run_tournament(
+        [
+            (aqua_fact, normal_strat),
+            (heal_fact, defensive_strat),
+            (trans_fact, aggressive_strat),
+        ]
+    )
